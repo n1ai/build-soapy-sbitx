@@ -36,7 +36,7 @@ read -rp "Do you want to continue? (y/n): " a && [[ "$a" == "y" ]] || exit 1
 set -x
 
 # Install the banner program so I can use it below
-sudo apt-install -y sysvbanner
+sudo apt install -y sysvbanner
 
 # Set the TOP variable to where you want most of this code to be built
 # and export it to the environment (see also: vars-export.sh)
