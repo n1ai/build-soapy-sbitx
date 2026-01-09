@@ -2,14 +2,15 @@
 # build-sbitx-soapy
 
 Scripts to build and/or install Soapy components as well as some SoapySDR applications for use with the sBITX HF Transceiver:
-- SparkSDR
-- CubicSDR
-- pihpsdr-g0orx
-- pihpsdr-dl1ycf
-- deskhpsdr
-- linhpsdr-w4whl
-- gqrx
-- quisk
+- [SparkSDR](https://www.sparksdr.com/) ([manual](https://www.sparksdr.com/manual))
+- [pihpsdr-g0orx](https://github.com/g0orx/pihpsdr) ([wiki](https://github.com/g0orx/pihpsdr/wiki))
+- [pihpsdr-dl1ycf](https://github.com/dl1ycf/pihpsdr) ([manual](https://github.com/dl1ycf/pihpsdr/releases/download/v2.5/piHPSDR-Manual-v2.5.pdf))
+- [deskhpsdr](https://github.com/dl1bz/deskhpsdr) ([discussions](https://github.com/dl1bz/deskhpsdr/discussions))
+- [linhpsdr-w4whl](https://github.com/willardharris/linhpsdr) ([documentation](https://github.com/willardharris/linhpsdr/tree/master/documentation))
+- [gqrx](https://github.com/gqrx-sdr/gqrx) ([homepage](https://www.gqrx.dk))
+- [quisk](https://pypi.org/project/quisk) ([documentation](http://james.ahlstrom.name/quisk/docs.html))
+- [CubicSDR](https://github.com/cjcliffe/CubicSDR) ([manual](https://cubicsdr.readthedocs.io/en/latest/))
+- [SDRPlusPlus](https://github.com/AlexandreRouma/SDRPlusPlus) ([manual](https://www.sdrpp.org/manual.pdf))
 
 Credits:
 - Juan, WP3DN
