@@ -83,6 +83,14 @@ sudo apt install -y \
     libfftw3-dev libgtk-3-dev libpulse-dev libpulse-mainloop-glib0 \
     libasound2-dev libusb-1.0-0-dev libi2c-dev libgpiod-dev 
 
+# build WiringPi from the standard repo since sbitx_ctrl needs it
+banner "WiringPi"
+[ ! -d WiringPi ] && git clone https://github.com/WiringPi/WiringPi.git
+pushd WiringPi
+# WiringPi build script has install with sudo commands built-in
+./build |& tee build.log
+popd
+
 # build sbitx_ctrl from my fork of the sbitx-core repo
 banner "Sbitx-Ctrl"
 [ ! -d sbitx-core ] && git clone https://github.com/n1ai/sbitx-core
