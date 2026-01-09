@@ -11,7 +11,7 @@ pushd linhpsdr-w4whl
 git pull
 
 # Patch the Makefile to use the local wdsp
-if git diff --quiet Makefile; then
+if git diff --quiet Makefile.linux; then
     # generate the patch for the code
     patch -p1 << 'EOF'
 diff --git a/Makefile.linux b/Makefile.linux
