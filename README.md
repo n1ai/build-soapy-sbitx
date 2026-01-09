@@ -18,12 +18,12 @@ Credits:
 - Authors/Maintainers of the above SDR applications
 
 ## Prerequsites
-- Boot[the 64-bit team's sbitx image](https://github.com/drexjj/sbitx/releases)
+- Boot [the 64-bit team's sbitx image](https://github.com/drexjj/sbitx/releases)
 - It should be a freshly installed copy
 - My scripts do not modify the sbitx app or its files
-- My scripts will install new packages that may supercede the ones on that image
-- Therefore it's best to just start up with fresh install
-- As per the link, make sure you use Backup Manager to save any important stuff off any copy of the image you are using and re-install the backup on the new copy
+- My scripts will install new packages/programs that may supercede the ones on that image
+- Therefore it's best to just start with fresh install if you can
+- As per the link, make sure you use the 64-bit team's Backup Manager to save any important stuff off any copy of the image you are using and re-install the backup on the new copy
 
 ## Running The Script
 - Open a Terminal window on the sbitx device
@@ -149,8 +149,29 @@ Notes:
 
 CubicSDR will start with a device selection and it should list sbitx as an option.  It will also let you select an audio device. After this, tune to a station, choose a "modem" (AM, FM, etc) and click on the center of the signal in the waterfall to activate the "modem".  If you located a signal it can process you should see a signal in the audio waveform window and hear sound on the audio device you've selected.  Beyond this, please consult someone familiar with CubicSDR because I have not mastered it.
 
+## Running SDR++ 
+
+- The program is called sdrpp on Linux
+- The first time you start it there will be some setup to do
+  - On the left hand toolbar, locate the Module Manager
+  - If it is not opened, click the down arrow next to its name
+  - You will see two columns of Name and Type values
+  - Underneath those Name / Type entries you will find a row with a blank area, a drop down, and a plus sign
+  - In that row:
+    - Click on the blank area and type a name such as SoapySDR 
+    - In the drop down, scroll till you see `soapy_source` and click on it
+    - Then click on the `+` sign to add a new entry for `soapy_source`
+    - Finally, close the app and restart it
+- Upon (re-)starting the app the top left toolbar should have Sources on top
+  - If it is not open, click on its down-arrow to open it
+  - On the first drop-down below Sources choose SoapySDR as your source
+  - If you only have other Soapy devices plugged in it should just find sBITX
+  - Otherwise scroll through the entries till you find sBITX
+- Then use ▶️ on the top left to start the radio
+- Enjoy!
+
 ## TODO
 
 Some things I hope to do in the not too distant future:
-- make sure the scripts install desktop icons in all cases 
+- Make sure the scripts install desktop icons in all cases 
 

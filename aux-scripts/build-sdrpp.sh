@@ -4,7 +4,7 @@ set -ex
 pushd ${TOP}
 
 sudo apt install -y libglfw3-dev libglew-dev libvolk2-dev \
-  libzstd-dev libzstd1 portaudio19-dev libcodec2-dev
+  libzstd-dev libzstd1 portaudio19-dev libcodec2-dev librtaudio-dev
 
 [ ! -d SDRPlusPlus ] && git clone \
   https://github.com/AlexandreRouma/SDRPlusPlus.git

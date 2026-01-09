@@ -135,6 +135,12 @@ pushd ${TOP}/build-soapy-sbitx
 bash -x ./aux-scripts/build-soapy-pluto.sh
 popd
 
+# install sparksdr using my install script
+pushd ${TOP}/build-soapy-sbitx
+banner "SparkSDR++"
+bash -x ./aux-scripts/install-sparksdr.sh
+popd
+
 # build pihpdr-g00rx using my build script
 pushd ${TOP}/build-soapy-sbitx
 banner "Hp-G0ORX"
@@ -157,6 +163,12 @@ popd
 pushd ${TOP}/build-soapy-sbitx
 banner "Lin-W4WHL"
 bash -x ./aux-scripts/build-linhpsdr-w4whl.sh
+popd
+
+# build sdrpp using my build script
+pushd ${TOP}/build-soapy-sbitx
+banner "sdr++"
+bash -x ./aux-scripts/build-sdrpp.sh
 popd
 
 popd # ${TOP}
