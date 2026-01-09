@@ -3,8 +3,10 @@ set -ex
 [ -r vars-import.sh ] && . vars-import.sh || false
 pushd ${TOP}
 
-sudo apt install -y \
- libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libpcap-dev libjson-c-dev 
+sudo apt install -y libfftw3-dev libgtk-3-dev libwebkit2gtk-4.0-dev \
+ libwebkit2gtk-4.1-dev libasound2-dev libssl-dev libcurl4-openssl-dev \
+ libusb-1.0-0-dev libi2c-dev libgpiod-dev libpulse-dev libpcap-dev \
+ libjson-c-dev gnome-themes-extra
 
 pushd ${TOP}
 [ ! -d deskhpsdr ] && git clone https://github.com/dl1bz/deskhpsdr deskhpsdr
