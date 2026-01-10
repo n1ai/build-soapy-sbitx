@@ -23,6 +23,7 @@ echo 'blacklist dvb_usb_rtl28xxu' | \
 popd
 
 banner "SoapRtlSdr"
+sudo rm -f /usr/lib/aarch64-linux-gnu/SoapySDR/modules0.8/librtlsdrSupport.so
 pushd ${TOP}
 [ ! -d SoapyRTLSDR ] && git clone https://github.com/pothosware/SoapyRTLSDR.git
 cd SoapyRTLSDR

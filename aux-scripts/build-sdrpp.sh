@@ -12,6 +12,8 @@ pushd SDRPlusPlus
 git pull
 rm -rf build
 mkdir build && cd build
+# static library should NOT be present
+sudo rm -f /usr/local/lib/libfftw3f.a
 cmake .. \
   -DOPT_BUILD_RTL_SDR_SOURCE=ON \
   -DOPT_BUILD_AIRSPY_SOURCE=ON \

@@ -23,8 +23,7 @@
 echo "Attention"
 printf "This script will do a bunch of things you may or may not want:
   • It will update all the core Debian packages on the system \n\
-  • it will make a new build directory at:\n\
-      \t${TOP}\n\
+  • it will make a new build directory based on the TOP variable\n\
   • It will build and/or install several new SDR libraries and apps\n\
     • These may or may not conflict with ones already on your system\n\
   • It will make your system run slowly for a long time while it runs\n\
@@ -64,13 +63,15 @@ sudo apt update && sudo apt -y upgrade
 banner "Core-Deps"
 sudo apt install -y \
   libsoapysdr-dev soapysdr-tools \
-  soapysdr-module-remote soapyremote-server \
   airspy libairspy-dev soapysdr-module-airspy \
+  hackrf libhackrf-dev soapysdr-module-hackrf \
   gqrx-sdr libgnuradio-hpsdr1.0.0 quisk cubicsdr \
   pavucontrol || true
 
-# remove xtrx-dkms since it's broken, then clean up
 banner "FixInstall"
+# remove the soapyaudio driver since it opens the sbitx codec
+sudo rm -f /usr/lib/aarch64-linux-gnu/SoapySDR/modules0.8/libaudioSupport.so
+# remove xtrx-dkms since it's broken, then clean up
 sudo apt remove -y xtrx-dkms || true
 sudo apt autoremove -y || true
 
