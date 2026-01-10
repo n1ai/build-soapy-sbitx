@@ -71,6 +71,8 @@ sudo apt install -y \
 banner "FixInstall"
 # remove the soapyaudio driver since it opens the sbitx codec
 sudo rm -f /usr/lib/aarch64-linux-gnu/SoapySDR/modules0.8/libaudioSupport.so
+# remove the soapyremote driver since it also opens the sbitx codec
+sudo rm -f /usr/lib/aarch64-linux-gnu/SoapySDR/modules0.8/libremoteSupport.so
 # remove xtrx-dkms since it's broken, then clean up
 sudo apt remove -y xtrx-dkms || true
 sudo apt autoremove -y || true
