@@ -14,7 +14,7 @@ git pull
 rm -rf build 
 mkdir build && cd build
 cmake .. -Wno-dev -DINSTALL_UDEV_RULES=ON -DUSE_UACCESS_RULES=ON |& tee cmake.log
-make $(JFLAGS)
+make ${JFLAG}
 sudo make install
 sudo ldconfig
 popd

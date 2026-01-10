@@ -20,7 +20,7 @@ cmake .. \
   -DOPT_BUILD_NEW_PORTAUDIO_SINK=ON \
   -DOPT_BUILD_SOAPY_SOURCE=ON \
   -DCMAKE_BUILD_TYPE=Release
-make $(JFLAG)
+make ${JFLAG}
 sudo make install
 sudo ldconfig
 

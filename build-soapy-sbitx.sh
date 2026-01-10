@@ -49,6 +49,7 @@ mkdir -p ${TOP}
 pushd ${TOP}
 # set the "make" parallel compile flag based on the number of procs 
 # you may have to hard-code this to less on slower Pis with less memory
+#JFLAG="-j1"
 JFLAG="-j$(nproc)"
 export JFLAG
 
@@ -111,8 +112,8 @@ git pull
 pushd soapy2sbitx
 rm -rf build
 mkdir -p build && cd build
-cmake .. |& tee cmake.log
-make -j2
+cmake .. 
+make
 sudo make install
 sudo ldconfig
 banner "SoapyInfo"
@@ -135,7 +136,7 @@ popd
 
 # build soapy airspyhf+ using my script
 pushd ${TOP}/build-soapy-sbitx
-bash -x ./aux-scripts/build-soapy-sdrplay.sh
+bash -x ./aux-scripts/build-soapy-airspyhf.sh
 popd
 
 # build soapy pluto using my script

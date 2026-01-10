@@ -31,7 +31,7 @@ git pull
 rm -rf build
 mkdir -p build && cd build
 cmake ..
-make $(JFLAG)
+make ${JFLAG}
 sudo make install
 sudo ldconfig
 banner "SoapyInfo"

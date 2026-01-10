@@ -1,5 +1,5 @@
 #
-# Note: This script is used when we build all of Soapy from scratch.
+# Note: This script was used when we build all of Soapy from scratch.
 # Currently we use the Debian version of the main Soapy libs, headers and tools
 # and just build various modules we want that are not in the Debian repo.
 # We use individual scripts for those modules
@@ -157,7 +157,7 @@ git pull
 rm -rf build
 mkdir build && cd build
 cmake .. |& tee cmake.log
-make $(JFLAG) |& tee make.log
+make ${JFLAG} |& tee make.log
 sudo make install
 sudo ldconfig
 SoapySDRUtil --info
