@@ -36,7 +36,7 @@ cd code/soapy-sbitx
 ```
 - Enter the following commands to download this repository from GitHub and to enter its main directory
 ```bash
-git clone https://n1ai/build-soapy-sbitx.git
+git clone https://github.com/n1ai/build-soapy-sbitx.git
 cd build-soapy-sbitx
 ```
 - To run the script for first time, without capturing its output, just do:
