@@ -165,11 +165,12 @@ banner "Hp-DL1YCF"
 bash -x ./aux-scripts/build-pihpsdr-dl1ycf.sh
 popd
 
-# build deskhpsdr using my build script
-pushd ${TOP}/build-soapy-sbitx
-banner "deskhpsdr"
-bash -x ./aux-scripts/build-deskhpsdr.sh
-popd
+## DC: Comment out deskhpsdr because a download fails due to cert error
+## build deskhpsdr using my build script
+#pushd ${TOP}/build-soapy-sbitx
+#banner "deskhpsdr"
+#bash -x ./aux-scripts/build-deskhpsdr.sh
+#popd
 
 # build linhpsdr-w4whl using my build script
 pushd ${TOP}/build-soapy-sbitx
