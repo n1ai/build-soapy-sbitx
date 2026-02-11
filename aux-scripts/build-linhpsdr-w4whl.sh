@@ -8,12 +8,11 @@ sudo apt-get install -y libsoundio-dev
 [ ! -d linhpsdr-w4whl ] && git clone --depth 1 \
   https://github.com/willardharris/linhpsdr.git linhpsdr-w4whl
 pushd linhpsdr-w4whl
+git stash  # Save old files so we can modify any newly-pulled version
 git pull
 
 # Patch the Makefile to use the local wdsp
-if git diff --quiet Makefile.linux; then
-    # generate the patch for the code
-    patch -p1 << 'EOF'
+patch -p1 << 'EOF'
 diff --git a/Makefile.linux b/Makefile.linux
 index 76fd239..6892f8b 100644
 --- a/Makefile.linux
@@ -42,12 +41,9 @@ index 76fd239..6892f8b 100644
 \ No newline at end of file
 +	cd pkg; dpkg-deb --build linhpsdr
 EOF
-fi
 
 # Patch the soapy discovery code to set the sample rate for sbitx
-if git diff --quiet src/soapy_discovery.c; then
-    # Traditional sample rate fix for linhpsdr
-    patch -p1 << 'EOF'
+patch -p1 << 'EOF'
 diff --git a/soapy_discovery.c b/soapy_discovery.c
 index cd816c1..9f6cd06 100644
 --- a/soapy_discovery.c
@@ -61,7 +57,6 @@ index cd816c1..9f6cd06 100644
    }
    fprintf(stderr,"sample_rate selected %d\n",sample_rate);
 EOF
-fi
 
 # WDSP code
 pushd wdsp

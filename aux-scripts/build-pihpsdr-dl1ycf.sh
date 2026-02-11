@@ -6,12 +6,11 @@ pushd ${TOP}
 [ ! -d pihpsdr-dl1ycf ] && git clone --depth 1 \
   https://github.com/dl1ycf/pihpsdr pihpsdr-dl1ycf
 pushd pihpsdr-dl1ycf
+git stash  # Save old files so we can modify any newly-pulled version
 git pull
 
-# Patch the Makefile to configure features the way we want
-if git diff --quiet Makefile; then
-    # generate the patch for the code
-    cat > Makefile.diff <<EOF
+# generate the patch for the Makefile
+cat > Makefile.diff <<EOF
 --- a/Makefile
 +++ b/Makefile
 @@ -12,11 +12,11 @@
@@ -30,11 +29,8 @@ if git diff --quiet Makefile; then
  AUDIO=PULSE
  NR34LIB=OFF
 EOF
-    # apply the patch for the code
-    patch -p1 < Makefile.diff
-else
-    echo "Makefile is already modified"
-fi
+# apply the patch for the code
+patch -p1 < Makefile.diff
 
 # scavanging LINUX/libinstall.txt for the parts we need
 export TARGET="${TOP}/pihpsdr-dl1ycf/LINUX"
@@ -65,10 +61,8 @@ cp $TARGET/pihpsdr-dl1ycf.desktop $HOME/.local/share/applications
 cp release/pihpsdr/hpsdr.png $TARGET
 cp release/pihpsdr/hpsdr_icon.png $TARGET
 
-# Patch the soapy discovery code to set the sample rate for sbitx
-if git diff --quiet src/soapy_discovery.c; then
-    # generate the patch for the code
-    cat > patch-sample-rate.diff <<EOF
+# generate the patch for the code
+cat > patch-sample-rate.diff <<EOF
 --- a/src/soapy_discovery.c
 +++ b/src/soapy_discovery.c
 @@ -146,6 +146,8 @@ static void get_info(char *driver) {
@@ -81,11 +75,8 @@ if git diff --quiet src/soapy_discovery.c; then
      sample_rate = 48000;
    }
 EOF
-    # apply the patch for the code
-    patch -p1 < patch-sample-rate.diff
-else
-    echo "src/soapy_discovery.c is already modified"
-fi
+# apply the patch for the code
+patch -p1 < patch-sample-rate.diff
 
 # build it!
 make ${JFLAG} clean

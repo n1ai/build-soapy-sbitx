@@ -8,10 +8,11 @@ sudo apt install -y libfftw3-dev libgtk-3-dev libwebkit2gtk-4.0-dev \
  libusb-1.0-0-dev libi2c-dev libgpiod-dev libpulse-dev libpcap-dev \
  libjson-c-dev gnome-themes-extra
 
-pushd ${TOP}
 [ ! -d deskhpsdr ] && git clone https://github.com/dl1bz/deskhpsdr deskhpsdr
 pushd deskhpsdr
+git stash  # Save old files so we can modify any newly-pulled version
 git pull
+
 # blast the config we want into make.config.deskhpsdr
 # we can't tell anything about the state of the file or its history
 # because the maintainer has done:
@@ -32,6 +33,7 @@ AUTOGAIN=OFF
 REGION1=OFF
 WMAP=OFF
 EOF
+
 # scavanging LINUX/libinstall.txt for the parts we need
 export TARGET="${TOP}/deskhpsdr/LINUX"
 rm -f $HOME/Desktop/deskhpsdr.desktop
@@ -60,9 +62,7 @@ cp release/deskhpsdr/hpsdr.png $TARGET
 cp release/deskhpsdr/hpsdr_icon.png $TARGET
 
 # Patch the soapy discovery code to set the sample rate for sbitx
-if git diff --quiet src/soapy_discovery.c; then
-    # generate the patch for the code
-    patch -p1 << EOF
+patch -p1 << EOF
 diff --git a/src/soapy_discovery.c b/src/soapy_discovery.c
 index ce1d179..b0902b9 100644
 --- a/src/soapy_discovery.c
@@ -77,13 +77,12 @@ index ce1d179..b0902b9 100644
      sample_rate = 48000;
    }
 EOF
-else
-    echo "src/soapy_discovery.c is already modified"
-fi
 
 # (re-)build it!
 make ${JFLAG} clean
-make ${JFLAG} 
+# hack: first build exits early w/o setting status, 2nd time works
+make ${JFLAG} || true
+make ${JFLAG}
 # do NOT install it!
 
 popd  # deskhpsdr
